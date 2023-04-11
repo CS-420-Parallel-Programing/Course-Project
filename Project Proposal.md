@@ -1,6 +1,6 @@
 # Introduction
 
-This project will implement parallel BFS algorithm to compute the distances to all vertices starting with any random vertex. The implementation mainly utilizes MPI and OpenMP as toolkits. Generally, we will develop a non-parallel BFS method as our baseline. Then, we will develop three parallel BFS solutions with OpenMP, MPI and hybrid one respectively. Finally, we will compare the performance and scaling poperties of different methods.
+This project will implement parallel BFS algorithm to compute the distances to all vertices starting with any random vertex. The implementation mainly utilizes MPI and OpenMP as toolkits. Generally, we will develop a non-parallel BFS method as our baseline. Then, we will develop three parallel BFS solutions with OpenMP, MPI and a hybrid version respectively. Finally, we will compare the performance and scaling poperties of different methods.
 
 # Implementation of Non-Parallel Breadth First Search
 
