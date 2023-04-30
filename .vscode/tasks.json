@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build test.cpp",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${workspaceFolder}/test.cpp",
+                "${workspaceFolder}/graph.cpp",
+                "${workspaceFolder}/bfs.cpp",
+                "-o",
+                "${workspaceFolder}/test.out"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

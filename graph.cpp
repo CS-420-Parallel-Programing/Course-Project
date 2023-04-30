@@ -7,6 +7,8 @@ Graph::Graph(int n) {
     adj_matrix.resize(n);
     for (int i = 0; i < n; i++) {
         adj_matrix[i].resize(n, -1);
+        // bug_fixed: the diagonal terms should be zero to avoid mistacks calculating distances.
+        adj_matrix[i][i] = 0;
     }
 }
 
