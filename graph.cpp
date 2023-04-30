@@ -13,7 +13,7 @@ Graph::Graph(int n) {
 
 bool Graph::add_edge(int i, int j, int distance) {
     // return false if two vertices are already connected.
-    if (adj_matrix[i][j] != 0) {
+    if (adj_matrix[i][j] != -1) {
         return false;
     }
     adj_matrix[i][j] = distance;

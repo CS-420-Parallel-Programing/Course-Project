@@ -1,5 +1,6 @@
 #include "bfs.h"
 #include <queue>
+#include <iostream>
 
 std::vector<int> bfs(const Graph& graph, int start_vertex) {
     int n = graph.get_size();
@@ -18,18 +19,24 @@ std::vector<int> bfs(const Graph& graph, int start_vertex) {
         queue_.pop();
 
         for (int i = 0; i < n; i++) {
+            // std::cout << "Search vertex:" << i << std::endl;
+            // std::cout << "Distance: " << graph.check(curr_vertex, i) << std::endl;
             // If current vertex and vertex i are connected and i is not visited 
             if (graph.check(curr_vertex, i) != -1 && !visited[i]) {
                 int new_distance = distances[curr_vertex] + graph.check(curr_vertex, i);
                 // Update distance if the new distance is smaller than recorded distance.
                 // Or we don't have recorded distance
                 if (new_distance < distances[i] || distances[i] == -1) {
+                    // std::cout << "Update distance" << std::endl;
                     distances[i] = new_distance;
                 }
                 queue_.push(i);
+                // std::cout << "Add vertex" << i << "into the queue" << std::endl;
                 visited[i] = true;
             }
         }
     }
+
+    return distances;
     
 }
