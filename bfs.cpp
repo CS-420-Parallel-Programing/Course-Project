@@ -19,20 +19,30 @@ std::vector<int> bfs(const Graph& graph, int start_vertex) {
         queue_.pop();
 
         for (int i = 0; i < n; i++) {
-            // std::cout << "Search vertex:" << i << std::endl;
-            // std::cout << "Distance: " << graph.check(curr_vertex, i) << std::endl;
             // If current vertex and vertex i are connected and i is not visited 
             if (graph.check(curr_vertex, i) != -1 && !visited[i]) {
-                int new_distance = distances[curr_vertex] + graph.check(curr_vertex, i);
-                // Update distance if the new distance is smaller than recorded distance.
-                // Or we don't have recorded distance
-                if (new_distance < distances[i] || distances[i] == -1) {
-                    // std::cout << "Update distance" << std::endl;
-                    distances[i] = new_distance;
-                }
                 queue_.push(i);
                 // std::cout << "Add vertex" << i << "into the queue" << std::endl;
                 visited[i] = true;
+            }
+
+            /**
+             * Update the starting vertex's distance to current vertex and its neighbors. This should be separated from the search.
+             * Because even though all vertices has been added to the queue, we still need to update distances later then they are poped
+             * from the queue.
+             * 
+             * The condition to update is that starting vertex is connected to the current vertex and the current vertex is connected
+             * to the vertex that is being checked.
+             */
+            if (distances[curr_vertex] != -1 && graph.check(curr_vertex, i) != -1) {
+                // The new distance is start-current + current+neighbor = start-neighbor
+                int new_distance = distances[curr_vertex] + graph.check(curr_vertex, i);
+            
+                if (distances[i] != -1) {
+                    distances[i] = std::min(new_distance, distances[i]);
+                } else { // If there is no previous records of the distance, directly update the record
+                    distances[i] = new_distance;
+                }    
             }
         }
     }
