@@ -13,7 +13,10 @@
 - [ ] Add a function to record the time spent on searching
 - [ ] Write a auto-test for bfs
 
+## Reference Materials
 
+- [ ] [Parallel Dij Repo with OpenMP and MPI](https://github.com/Emilylulu/parallel-Dijkstra-s-Algorithm)
+- [ ] [Buffalu CSE's presentation](https://cse.buffalo.edu/faculty/miller/Courses/CSE633/Ye-Fall-2012-CSE633.pdf)
 
 ## Vscode Debugger Setup
 

@@ -12,7 +12,7 @@ Graph::Graph(int n) {
     }
 }
 
-
+// Need to update: weight cannot be negative
 bool Graph::add_edge(int i, int j, int distance) {
     // return false if two vertices are already connected.
     if (adj_matrix[i][j] != -1) {
