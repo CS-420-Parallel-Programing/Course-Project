@@ -1,23 +1,25 @@
 #include "graph.h"
 #include <random>
+#include <limits>
 
 Graph::Graph(int n) {
     size = n;
     // Initialize with all vertices non-connected
     adj_matrix.resize(n);
     for (int i = 0; i < n; i++) {
-        adj_matrix[i].resize(n, -1);
+        adj_matrix[i].resize(n, std::numeric_limits<int>::max());
         // bug_fixed: the diagonal terms should be zero to avoid mistacks calculating distances.
         adj_matrix[i][i] = 0;
     }
 }
 
 
+// The function allows to update the distance between two vertices.
 bool Graph::add_edge(int i, int j, int distance) {
-    // return false if two vertices are already connected.
-    if (adj_matrix[i][j] != -1) {
+    if (distance < 0) {
         return false;
     }
+
     adj_matrix[i][j] = distance;
     adj_matrix[j][i] = distance;
     return true;

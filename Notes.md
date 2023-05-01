@@ -1,11 +1,11 @@
 ## Compile Instruction:
 
 - Use the following command to compile and the main file:
-  g++ -std=c++11 graph.cpp bfs.cpp main.cpp -o bfs && ./bfs
+  g++ -std=c++11 graph.cpp dijkstra.cpp main.cpp -o bfs && ./bfs
 
 - Use the following command to compile and run the test file:
 
-  g++ -std=c++11 graph.cpp bfs.cpp test.cpp -o test && ./test
+  g++ -std=c++11 graph.cpp dijkstra.cpp test.cpp -o test && ./test
 
 
 ## Todos:
@@ -13,7 +13,10 @@
 - [ ] Add a function to record the time spent on searching
 - [ ] Write a auto-test for bfs
 
+## Reference Materials
 
+- [ ] [Parallel Dij Repo with OpenMP and MPI](https://github.com/Emilylulu/parallel-Dijkstra-s-Algorithm)
+- [ ] [Buffalu CSE's presentation](https://cse.buffalo.edu/faculty/miller/Courses/CSE633/Ye-Fall-2012-CSE633.pdf)
 
 ## Vscode Debugger Setup
 
