@@ -1,11 +1,11 @@
 ## Compile Instruction:
 
 - Use the following command to compile and the main file:
-  g++ -std=c++11 graph.cpp bfs.cpp main.cpp -o bfs && ./bfs
+  g++ -std=c++11 graph.cpp dijkstra.cpp main.cpp -o bfs && ./bfs
 
 - Use the following command to compile and run the test file:
 
-  g++ -std=c++11 graph.cpp bfs.cpp test.cpp -o test && ./test
+  g++ -std=c++11 graph.cpp dijkstra.cpp test.cpp -o test && ./test
 
 
 ## Todos:

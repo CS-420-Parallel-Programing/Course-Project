@@ -10,7 +10,7 @@
                 "-g",
                 "${workspaceFolder}/test.cpp",
                 "${workspaceFolder}/graph.cpp",
-                "${workspaceFolder}/bfs.cpp",
+                "${workspaceFolder}/dijkstra.cpp",
                 "-o",
                 "${workspaceFolder}/test.out"
             ],
