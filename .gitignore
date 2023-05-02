@@ -2,3 +2,4 @@
 Reference Materials
 
 .vscode/c_cpp_properties.json
+*.out
