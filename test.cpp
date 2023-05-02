@@ -34,7 +34,7 @@ void test_graph() {
 }
 
 void test_nonparallel_dijkstra() {
-    Graph graph(5);
+    Graph graph(5, false);
 
     graph.add_edge(0, 1, 10);
     graph.add_edge(0, 3, 10);
@@ -53,7 +53,7 @@ void test_nonparallel_dijkstra() {
 }
 
 void test_parallel_dijkstra() {
-    Graph graph(5);
+    Graph graph(5, false);
 
     graph.add_edge(0, 1, 10);
     graph.add_edge(0, 3, 10);
