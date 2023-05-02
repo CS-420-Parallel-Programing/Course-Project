@@ -12,7 +12,29 @@
                 "${workspaceFolder}/graph.cpp",
                 "${workspaceFolder}/dijkstra.cpp",
                 "-o",
-                "${workspaceFolder}/test.out"
+                "${workspaceFolder}/test"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build and run main",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/graph.cpp",
+                "${workspaceFolder}/tools.cpp",
+                "${workspaceFolder}/dijkstra.cpp",
+                "-o",
+                "main"
             ],
             "group": {
                 "kind": "build",

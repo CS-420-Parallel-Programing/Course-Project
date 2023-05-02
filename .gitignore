@@ -1,5 +1,6 @@
-
 Reference Materials
 
 .vscode/c_cpp_properties.json
+main.dSYM
+test.out.dSYM
 *.out

@@ -4,13 +4,18 @@
 #include <string>
 #include <vector>
 #include "tools.h"
+#include <filesystem>
 
 using namespace std;
 
 Graph getGraph(){
     string line;
     string filename = "soc-sign-bitcoinotc.csv";
-    ifstream myfile(".\\graph_data\\" + filename);
+    std::filesystem::path basePath("./graph_data");
+    basePath /= filename;
+
+    
+    ifstream myfile(basePath);
     Graph graph(5881);
     if (myfile.is_open()) {
         int count = 0;

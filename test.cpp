@@ -34,7 +34,7 @@ void test_graph() {
 }
 
 void test_nonparallel_dijkstra() {
-    Graph graph(5);
+    Graph graph(5, false);
 
     graph.add_edge(0, 1, 10);
     graph.add_edge(0, 3, 10);
@@ -52,10 +52,32 @@ void test_nonparallel_dijkstra() {
     std::cout<< "Dijksdra's method tests all passed!" << std::endl;
 }
 
+void test_parallel_dijkstra() {
+    Graph graph(5, false);
+
+    graph.add_edge(0, 1, 10);
+    graph.add_edge(0, 3, 10);
+    graph.add_edge(0, 4, 1);
+    graph.add_edge(1, 2, 5);
+    graph.add_edge(2, 3, 3);
+    graph.add_edge(3, 4, 5);
+
+    // Test the distance with 0 as starting vertex
+    std::vector<int> expected_distances = {0, 10, 9, 6, 1};
+    std::vector<int> test_distances = dijkstra_omp(graph, 0);
+
+    assert(expected_distances == test_distances);
+
+    std::cout<< "Dijksdra's method tests all passed!" << std::endl;
+}
+
+
+
 
 int main() {
     test_graph();
     test_nonparallel_dijkstra();
+    test_parallel_dijkstra();
 
     return 0;
 }

@@ -20,6 +20,19 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "Launch Main",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "build and run main"
         }
     ]
 }
