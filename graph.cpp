@@ -1,8 +1,9 @@
 #include "graph.h"
 #include <random>
 
-Graph::Graph(int n) {
+Graph::Graph(int n, bool isdirected) {
     size = n;
+    hasDirection = isdirected;
     // Initialize with all vertices non-connected
     adj_matrix.resize(n);
     for (int i = 0; i < n; i++) {
@@ -20,7 +21,9 @@ bool Graph::add_edge(int i, int j, int distance) {
     }
 
     adj_matrix[i][j] = distance;
-    adj_matrix[j][i] = distance;
+    if(!hasDirection){
+        adj_matrix[j][i] = distance;
+    }
     return true;
 }
 

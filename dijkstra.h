@@ -10,3 +10,4 @@
  * @return return a vector recording the distances.
  */
 std::vector<int> dijkstra(const Graph& graph, int start_vertex);
+std::vector<int> dijkstra_omp(const Graph& graph, int start_vertex);

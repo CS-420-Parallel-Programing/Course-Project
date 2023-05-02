@@ -5,7 +5,7 @@
 
 class Graph {
 public:
-    Graph(int n);
+    Graph(int n, bool isDirected = true);
 
     /**
      * @brief function to add an edge between vertices
@@ -37,4 +37,5 @@ private:
     // Off diagonal terms A_{ij} are 0 or 1. 1 means connected and 0 means not connected.
     std::vector<std::vector<int>> adj_matrix;
     int size;
+    bool hasDirection;
 };
