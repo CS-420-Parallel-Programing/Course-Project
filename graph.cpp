@@ -1,7 +1,6 @@
 #include "graph.h"
 #include <random>
 
-
 Graph::Graph(int n) {
     size = n;
     // Initialize with all vertices non-connected
