@@ -13,3 +13,4 @@
  */
 std::vector<int> dijkstra(const Graph& graph, int start_vertex);
 std::vector<int> dijkstra_omp(const Graph& graph, int start_vertex);
+std::vector<int> dijkstra_mpi(const Graph& graph, int start_vertex, int rank, int size);

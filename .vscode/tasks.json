@@ -14,6 +14,7 @@
                 "${workspaceFolder}/test.cpp",
                 "${workspaceFolder}/graph.cpp",
                 "${workspaceFolder}/dijkstra.cpp",
+                "${workspaceFolder}/mpi_traversal.cpp",
                 "-o",
                 "${workspaceFolder}/test"
             ],

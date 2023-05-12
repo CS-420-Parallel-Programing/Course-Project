@@ -28,9 +28,11 @@ public:
      * 
      * @param i 
      * @param j 
-     * @return int. If two vertices are not connected return -1.
+     * @return int. If two vertices are not connected return max int
      */
     int check(int i, int j) const;
+
+    std::vector<int> get_neighbors(int vid) const;
 
 private:
     // 2-D array to represent a undirected graph. The diagonal terms are teh degree of the vertex.

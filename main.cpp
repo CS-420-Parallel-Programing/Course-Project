@@ -24,6 +24,21 @@ int main() {
     te = clock();
     cout << "Total time (dijkstra openMp):" << (double)(te-ts)/CLOCKS_PER_SEC << endl;
 
-    cout << "Parallel results are " << (nonResult == ompResult ? "correct!" : "false!");
+    
+    MPI_Init(NULL, NULL);
+    int rank, size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+    ts = clock();
+    std::vector<int> mpiResult = dijkstra_mpi(graph, 2, rank, size);
+    te = clock();
+    
+    MPI_Finalize();
+    cout << "Total time (dijkstra MPI):" << (double)(te-ts)/CLOCKS_PER_SEC << endl;
+
+
+    cout << "OMP parallel results are " << (nonResult == ompResult ? "correct!" : "false!");
+    cout << "MPI parallel results are " << (nonResult == mpiResult ? "correct!" : "false!");
     return 0;
 }
