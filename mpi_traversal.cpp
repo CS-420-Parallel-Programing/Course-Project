@@ -50,6 +50,7 @@ bool* start(int start_vertex, Graph& graph) {
         // visited.insert(start_vertex);
         // visited[start_vertex] = true;
         visit(start_vertex, visited, q, rank, size, graph);
+        // q.push(start_vertex);
     }
 
     int i;
@@ -64,13 +65,13 @@ bool* start(int start_vertex, Graph& graph) {
     
 
     while (true) {
-        if (rank != 0) {
+        // if (rank != 0) {
             // Check previous receive status
             // MPI_Test(&recv_req, &flag, &status);
             // If previous recv is done
             MPI_Recv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
-            visit(i, visited, q, rank, size, graph);            
-        }
+            visit(i, visited, q, rank, size, graph);           
+        // }
 
         if (!q.empty()) {
             i = q.front();
