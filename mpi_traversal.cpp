@@ -23,8 +23,7 @@ void visit(int vid, bool visited[], std::queue<int>& q, int rank, int size, Grap
                 MPI_Request req;
                 MPI_Status status;
                 
-                MPI_Isend(&i, 1, MPI_INT, pid, 0, MPI_COMM_WORLD, &req);
-                MPI_Wait(&req, &status);
+                MPI_Send(&i, 1, MPI_INT, pid, 0, MPI_COMM_WORLD);
                 // Free the request to ensure send buffer could reuse
                 // MPI_Request_free(&req);
             } else {
@@ -35,7 +34,6 @@ void visit(int vid, bool visited[], std::queue<int>& q, int rank, int size, Grap
 }
 
 bool* start(int start_vertex, Graph& graph) {
-    
     int size;
     int rank;
     MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -50,7 +48,7 @@ bool* start(int start_vertex, Graph& graph) {
     // start vertex is 0 as always
     if (rank == 0) {
         // visited.insert(start_vertex);
-        visited[start_vertex] = true;
+        // visited[start_vertex] = true;
         visit(start_vertex, visited, q, rank, size, graph);
     }
 
@@ -60,20 +58,18 @@ bool* start(int start_vertex, Graph& graph) {
     // int flag = 0;
 
     // If the current proccess is not 0, it has no element in queue at beginning
-    if (rank != 0) {
-        MPI_Irecv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &recv_req);
-    }
+    // if (rank != 0) {
+    //     MPI_Recv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+    // }
     
 
     while (true) {
         if (rank != 0) {
             // Check previous receive status
-            MPI_Wait(&recv_req, &status);
             // MPI_Test(&recv_req, &flag, &status);
             // If previous recv is done
-            visit(i, visited, q, rank, size, graph);
-            MPI_Irecv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &recv_req);
-            MPI_Wait(&recv_req, &status);
+            MPI_Recv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+            visit(i, visited, q, rank, size, graph);            
         }
 
         if (!q.empty()) {
