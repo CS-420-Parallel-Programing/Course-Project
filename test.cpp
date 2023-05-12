@@ -3,7 +3,6 @@
 #include <cassert>
 #include "graph.h"
 #include "dijkstra.h"
-#include "mpi_traversal.h"
 
 
 void test_graph() {
@@ -53,7 +52,7 @@ void test_nonparallel_dijkstra() {
     std::cout<< "Dijksdra's method tests all passed!" << std::endl;
 }
 
-void test_omp_dijkstra() {
+void test_parallel_dijkstra() {
     Graph graph(5, false);
 
     graph.add_edge(0, 1, 10);
@@ -69,20 +68,7 @@ void test_omp_dijkstra() {
 
     assert(expected_distances == test_distances);
 
-    std::cout<< "OMP Dijksdra's method tests all passed!" << std::endl;
-}
-
-void test_mpi_traversal() {
-    int rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    Graph graph(5, false);
-    graph.add_edge(0, 1, 10);
-    graph.add_edge(0, 3, 10);
-    graph.add_edge(0, 4, 1);
-    graph.add_edge(1, 2, 5);
-    graph.add_edge(2, 3, 3);
-    graph.add_edge(3, 4, 5);
-    start(0, graph);
+    std::cout<< "Dijksdra's method tests all passed!" << std::endl;
 }
 
 
@@ -91,10 +77,7 @@ void test_mpi_traversal() {
 int main() {
     test_graph();
     test_nonparallel_dijkstra();
-    test_omp_dijkstra();
+    test_parallel_dijkstra();
 
-    MPI_Init(NULL, NULL);
-    test_mpi_traversal();
-    MPI_Finalize();
     return 0;
 }

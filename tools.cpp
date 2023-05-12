@@ -10,29 +10,29 @@ using namespace std;
 
 Graph getGraph(){
     string line;
-    string filename = "soc-sign-bitcoinotc.csv";
-    std::filesystem::path basePath("./graph_data");
-    basePath /= filename;
+    string filename = "Email-Enron.txt";
 
-    
-    ifstream myfile(basePath);
-    Graph graph(5881);
+    // ifstream myfile(".\\graph_data\\" + filename);
+    // ifstream myfile("graph_data/Email-Enron.txt");
+    ifstream myfile("graph_data/facebook_combined.txt");
+    // Graph graph(36692, false);
+    Graph graph(4039, false);
     if (myfile.is_open()) {
-        int count = 0;
-        while (getline(myfile, line) && count++ <= 32000) {
+        while (getline(myfile, line)) {
             vector<string> tokens;
             stringstream ss(line);
             string token;
 
-            while (getline(ss, token, ',')) {
+            // while (getline(ss, token, '	')) {
+            //     tokens.push_back(token);
+            // }
+            while (getline(ss, token, ' ')) {
                 tokens.push_back(token);
             }
 
             int source = stoi(tokens[0]);
             int target = stoi(tokens[1]);
-            int value = stof(tokens[2]);
-            value = value >=0 ? value: -value;
-            graph.add_edge(source, target, value);
+            graph.add_edge(source, target, 1);
             // cout << "var1: " << source << ", var2: " << target << ", var3: " << value << endl;
         }
         cout << "Find file: " << filename <<endl;

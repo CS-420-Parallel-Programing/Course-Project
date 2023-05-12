@@ -8,8 +8,8 @@
 #include <mpi.h>
 
 
-void start(int start_vertex, Graph& graph);
-void visit(int vid, std::set<int>& visited, std::queue<int>& q, int rank, int size, Graph& graph);
+bool* start(int start_vertex, Graph& graph);
+void visit(int vid, bool visited[], std::queue<int>& q, int rank, int size, Graph& graph);
 int get_process(int vertex, int size);
 
 
