@@ -35,3 +35,15 @@ int Graph::check(int i, int j) const{
     return adj_matrix[i][j];
 }
 
+std::vector<int> Graph::get_neighbors(int vid) const {
+    std::vector<int> neighbors;
+
+    for (int i = 0; i < size; i++) {
+        if (i != vid && adj_matrix[vid][i] != std::numeric_limits<int>::max()) {
+            neighbors.push_back(i);
+        }
+    }
+
+    return neighbors;
+}
+

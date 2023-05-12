@@ -1,5 +1,4 @@
 #include "dijkstra.h"
-#include <omp.h>
 #include <queue>
 #include <iostream>
 

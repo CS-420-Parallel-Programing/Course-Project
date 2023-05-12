@@ -5,7 +5,7 @@
 
 - Use the following command to compile and run the test file:
 
-  g++ -std=c++11 graph.cpp dijkstra.cpp test.cpp -o test && ./test
+  clang++ -std=c++17 -g -I/opt/homebrew/Cellar/open-mpi/4.1.5/include -L/opt/homebrew/Cellar/open-mpi/4.1.5/lib -lmpi test.cpp graph.cpp dijkstra.cpp mpi_traversal.cpp -o test
 
 
 ## Todos:

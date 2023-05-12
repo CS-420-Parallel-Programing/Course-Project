@@ -8,9 +8,13 @@
             "args": [
                 "-std=c++17",
                 "-g",
+                "-I/opt/homebrew/Cellar/open-mpi/4.1.5/include",
+                "-L/opt/homebrew/Cellar/open-mpi/4.1.5/lib",
+                "-lmpi",
                 "${workspaceFolder}/test.cpp",
                 "${workspaceFolder}/graph.cpp",
                 "${workspaceFolder}/dijkstra.cpp",
+                "${workspaceFolder}/mpi_traversal.cpp",
                 "-o",
                 "${workspaceFolder}/test"
             ],
@@ -29,6 +33,9 @@
             "args": [
                 "-std=c++17",
                 "-g",
+                "-I/opt/homebrew/Cellar/open-mpi/4.1.5/include",
+                "-L/opt/homebrew/Cellar/open-mpi/4.1.5/lib",
+                "-lmpi",
                 "${workspaceFolder}/main.cpp",
                 "${workspaceFolder}/graph.cpp",
                 "${workspaceFolder}/tools.cpp",
