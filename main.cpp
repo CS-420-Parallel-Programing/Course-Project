@@ -24,6 +24,11 @@ int main() {
     te = clock();
     cout << "Total time (dijkstra openMp):" << (double)(te-ts)/CLOCKS_PER_SEC << endl;
 
-    cout << "Parallel results are " << (nonResult == ompResult ? "correct!" : "false!");
+    ts = clock();
+    std::vector<int> mpiResult = dijkstra_omp(graph, 2);
+    te = clock();
+    cout << "Total time (dijkstra Mpi):" << (double)(te-ts)/CLOCKS_PER_SEC << endl;
+
+    cout << "Parallel results are " << (nonResult == mpiResult ? "correct!" : "false!");
     return 0;
 }
