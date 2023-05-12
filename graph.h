@@ -6,7 +6,7 @@
 class Graph {
 public:
     Graph(int n, bool isDirected = true);
-
+    std::vector<std::vector<int>> adj_matrix;
     /**
      * @brief function to add an edge between vertices
      * 
@@ -35,7 +35,6 @@ public:
 private:
     // 2-D array to represent a undirected graph. The diagonal terms are teh degree of the vertex.
     // Off diagonal terms A_{ij} are 0 or 1. 1 means connected and 0 means not connected.
-    std::vector<std::vector<int>> adj_matrix;
     int size;
     bool hasDirection;
 };

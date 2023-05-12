@@ -35,3 +35,4 @@ int Graph::check(int i, int j) const{
     return adj_matrix[i][j];
 }
 
+
