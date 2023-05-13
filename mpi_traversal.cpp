@@ -56,28 +56,13 @@ bool* start(int start_vertex, Graph& graph) {
     int i;
     MPI_Request recv_req;
     MPI_Status status;
-    // int flag = 0;
-
-    // If the current proccess is not 0, it has no element in queue at beginning
-    // if (rank != 0) {
-    //     MPI_Recv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
-    // }
-    
-
     while (true) {
-        // if (rank != 0) {
-            // Check previous receive status
-            // MPI_Test(&recv_req, &flag, &status);
-            // If previous recv is done
-            MPI_Recv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
-            visit(i, visited, q, rank, size, graph);           
-        // }
-
+        MPI_Recv(&i, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+        visit(i, visited, q, rank, size, graph);
+                   
         if (!q.empty()) {
             i = q.front();
             q.pop();
-            // MPI_Wait(&recv_req, &status);
-            // MPI_Test(&recv_req, &flag, &status);
             visit(i, visited, q, rank, size, graph);
         }
 
@@ -95,7 +80,6 @@ bool* start(int start_vertex, Graph& graph) {
             break;
         }
     }
-
     MPI_Allreduce(visited, global_visited, n, MPI_CXX_BOOL, MPI_LOR, MPI_COMM_WORLD);
     delete[] visited;
     return global_visited;

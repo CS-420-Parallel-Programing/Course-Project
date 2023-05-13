@@ -14,9 +14,9 @@ Graph getGraph(){
 
     // ifstream myfile(".\\graph_data\\" + filename);
     // ifstream myfile("graph_data/Email-Enron.txt");
-    ifstream myfile("graph_data/facebook_combined.txt");
-    // Graph graph(36692, false);
-    Graph graph(4039, false);
+    ifstream myfile("graph_data/Email-Enron.txt");
+    Graph graph(36692, false);
+    // Graph graph(4039, false);
     if (myfile.is_open()) {
         while (getline(myfile, line)) {
             vector<string> tokens;
@@ -26,7 +26,7 @@ Graph getGraph(){
             // while (getline(ss, token, '	')) {
             //     tokens.push_back(token);
             // }
-            while (getline(ss, token, ' ')) {
+            while (getline(ss, token, '	')) {
                 tokens.push_back(token);
             }
 
