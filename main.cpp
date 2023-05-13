@@ -64,7 +64,7 @@ int main() {
             }
         }
         cout << count << " not match" << endl;
-        // cout << "MPI results are " << (seqResult == mpiResult ? "correct!" : "false!");
+        cout << "MPI results are " << (seqResult == mpiResult_vec ? "correct!" : "false!");
     }
 
 

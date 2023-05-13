@@ -38,7 +38,7 @@ bool* start(int start_vertex, Graph& graph) {
     int rank;
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    std::cout << "Use " << size << " processes." << std::endl;
+    // std::cout << "Use " << size << " processes." << std::endl;
 
     std::queue<int> q;
     int n = graph.get_size();
